@@ -1,7 +1,7 @@
 {
   "name": "pantrypilot",
   "version": "1.0.0",
-  "description": "A smart pantry inventory and shopping list dashboard.",
+  "description": "Pantry inventory and shopping list for reducing food waste.",
   "private": true,
   "main": "desktop/main.cjs",
   "scripts": {
