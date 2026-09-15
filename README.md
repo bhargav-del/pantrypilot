@@ -1,32 +1,71 @@
 # PantryPilot
 
-A smart pantry inventory and shopping-list dashboard designed to reduce food waste.
+> A smart pantry inventory and shopping-list dashboard designed to reduce food waste.
 
-PantryPilot keeps a lightweight record of what is already at home, highlights what should be used next, and turns missing staples into a simple shopping list.
+[![Quality checks](https://github.com/bhargav-del/pantrypilot/actions/workflows/quality.yml/badge.svg)](https://github.com/bhargav-del/pantrypilot/actions/workflows/quality.yml)
+[![Latest release](https://img.shields.io/github/v/release/bhargav-del/pantrypilot?display_name=tag&sort=semver)](https://github.com/bhargav-del/pantrypilot/releases)
+[![License](https://img.shields.io/github/license/bhargav-del/pantrypilot)](https://github.com/bhargav-del/pantrypilot/blob/main/LICENSE)
 
-## Highlights
+A smart pantry inventory and shopping-list dashboard designed to reduce food waste. Built as a local-first, dependency-light product experience with a browser build, a portable Windows desktop build, and a scheduled Android APK release.
+
+## What it demonstrates
+
 - Pantry inventory grouped by category
-- Expiring-soon filter
+- Expiring-soon filter and use-next cues
 - Shopping list with bought state
-- Add pantry items through an accessible dialog
-- Local persistence and responsive UI
-- No build step and no external credentials
+- Local persistence and responsive kitchen dashboard
 
 ## Run locally
 
+This is a zero-build static app for the browser:
+
 ```bash
+git clone https://github.com/bhargav-del/pantrypilot.git
+cd pantrypilot
 python3 -m http.server 4173
 ```
 
-Open http://localhost:4173.
+Open <http://localhost:4173>.
+
+For syntax and metadata checks:
+
+```bash
+node --check app.js
+```
+
+## Project structure
+
+```text
+├── index.html                 Product UI
+├── styles.css                 Responsive visual system
+├── app.js                    Product interactions
+├── desktop/main.cjs           Windows Electron shell
+├── capacitor.config.json      Android shell configuration
+├── .github/workflows/         Quality, Pages, Windows, and Android automation
+└── CHANGELOG.md               Release history
+```
+
+## Releases
+
+- [Browser source and releases](https://github.com/bhargav-del/pantrypilot/releases)
+- The Windows portable `.exe` is built by GitHub Actions.
+- The Android 7+ (API 24+) `v1.0.0` APK is scheduled for **September 16, 2026 at 08:00 IST**.
+
+## Privacy and security
+
+The core experience runs locally in the browser. No credentials are required. See [SECURITY.md](SECURITY.md) for responsible disclosure guidance.
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for setup, testing, and pull-request expectations.
+
+## Roadmap
+
+- Add richer empty and error states
+- Expand keyboard navigation
+- Add end-to-end browser coverage for the highest-value flows
+- Keep the product lightweight before adding network dependencies
 
 ## License
+
 MIT © 2026 Yuin
-
-## Desktop release
-
-The repository includes a portable Windows desktop build. Every push to `main` runs the Windows packaging workflow and publishes a `.exe` to the repository's **Releases** section. The desktop shell loads the same app locally, so it works without an API key or server.
-
-## Android release
-
-An Android 7.0+ build (API 24+) is scheduled for **September 16, 2026 at 08:00 IST**. The same responsive product is packaged with Capacitor as an installable APK and published to the repository's **Releases** section as `v1.0.0`.
