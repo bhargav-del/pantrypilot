@@ -1,7 +1,7 @@
 {
   "name": "pantrypilot",
-  "version": "1.0.0",
-  "description": "Pantry inventory and shopping list for reducing food waste.",
+  "version": "1.0.5",
+  "description": "Self-contained Windows desktop pantry inventory and shopping-list app.",
   "private": true,
   "main": "desktop/main.cjs",
   "scripts": {
@@ -29,8 +29,31 @@
       "package.json"
     ],
     "win": {
-      "target": "portable",
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "asar": true,
+    "portable": {
       "artifactName": "PantryPilot-Portable-${version}.exe"
+    },
+    "nsis": {
+      "artifactName": "PantryPilot-Setup-${version}.exe",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
     }
   }
 }
